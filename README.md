@@ -189,4 +189,10 @@ fichier ne dépasse pas 1 MO.
 - BONUS : Créez une petite documentation statique en utilisant MkDocs.
 - Rédigez **ci-dessous** une courte analyse du rapport produit par Sonar (métriques, évolution, état général...) :
 
-Le rapport Sonar final indique...
+## Analyse Sonar Finale
+
+Le rapport Sonar final de la branche d'évaluation montre une nette amélioration de la qualité de notre projet :
+
+- **Fiabilité** : Les bugs historiques, notamment la méthode extrêmement complexe et fausse `Entreprise.estJourFerie()`, ont été réécrits et corrigés.
+- **Couverture de code (Coverage)** : La couverture a largement augmenté. Nous avons introduit du TDD pour tester les cas limites de `estDansPlage()`, et ajouté des tests d'intégration réels touchant à la fois le Repository et les Services.
+- **Maintenabilité** : La dette technique a diminué. Plusieurs "Code Smells" ont été éliminés, comme l'ajout de mots-clés `final` sur les constantes (ex: `CONGES_PAYES_ACQUIS_PAR_MOIS`) et la simplification drastique des algorithmes inutiles.
