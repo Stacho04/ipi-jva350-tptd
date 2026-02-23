@@ -130,7 +130,7 @@ public final class Entreprise {
     }
 
     public static boolean estJourFerie(LocalDate jour) {
-    	return Entreprise.joursFeries(jour).contains(jour);
+        return Entreprise.joursFeries(jour).contains(jour);
     }
 
     /**
@@ -140,9 +140,9 @@ public final class Entreprise {
      * @param fin date de fin de la plage
      * @return
      */
+    
     public static boolean estDansPlage(LocalDate d, LocalDate debut, LocalDate fin) {
-        // à implémenter en TDD !
-    	if (d == null || debut == null || fin == null) {
+        if (d == null || debut == null || fin == null) {
             return false;
         }
         return !d.isBefore(debut) && !d.isAfter(fin);

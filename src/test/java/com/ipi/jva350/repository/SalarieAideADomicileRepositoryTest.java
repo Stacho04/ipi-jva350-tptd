@@ -46,7 +46,7 @@ public class SalarieAideADomicileRepositoryTest {
     
     @Test
     public void testPartCongesPrisTotauxAnneeNMoins1() {
-        // Given 
+        // Given :
         SalarieAideADomicile s1 = new SalarieAideADomicile();
         s1.setNom("Jean");
         s1.setCongesPayesAcquisAnneeNMoins1(20);
@@ -59,10 +59,10 @@ public class SalarieAideADomicileRepositoryTest {
         s2.setCongesPayesPrisAnneeNMoins1(15);
         salarieAideADomicileRepository.save(s2);
 
-        // When
+        // When :
         Double part = salarieAideADomicileRepository.partCongesPrisTotauxAnneeNMoins1();
 
-        // Then
+        // Then :
         Assertions.assertEquals(0.4, part, 0.001);
     }
 }
