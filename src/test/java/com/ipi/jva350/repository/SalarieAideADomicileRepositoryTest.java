@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.time.LocalDate;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -43,5 +42,27 @@ public class SalarieAideADomicileRepositoryTest {
         SalarieAideADomicile VivianRes = salarieAideADomicileRepository.findByNom(VivianExistant.getNom());
         // Then
         Assertions.assertEquals(VivianExistant.getNom(), VivianRes.getNom());
+    }
+    
+    @Test
+    public void testPartCongesPrisTotauxAnneeNMoins1() {
+        // Given 
+        SalarieAideADomicile s1 = new SalarieAideADomicile();
+        s1.setNom("Jean");
+        s1.setCongesPayesAcquisAnneeNMoins1(20);
+        s1.setCongesPayesPrisAnneeNMoins1(5);
+        salarieAideADomicileRepository.save(s1);
+
+        SalarieAideADomicile s2 = new SalarieAideADomicile();
+        s2.setNom("Marc");
+        s2.setCongesPayesAcquisAnneeNMoins1(30);
+        s2.setCongesPayesPrisAnneeNMoins1(15);
+        salarieAideADomicileRepository.save(s2);
+
+        // When
+        Double part = salarieAideADomicileRepository.partCongesPrisTotauxAnneeNMoins1();
+
+        // Then
+        Assertions.assertEquals(0.4, part, 0.001);
     }
 }

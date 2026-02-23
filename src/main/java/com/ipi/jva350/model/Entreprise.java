@@ -130,13 +130,7 @@ public final class Entreprise {
     }
 
     public static boolean estJourFerie(LocalDate jour) {
-        int monEntier = (int) Entreprise.joursFeries(jour).stream().filter(d ->
-                d.equals(jour)).count();
-        int test = bissextile(jour.getYear()) ? 1 : 0;
-        if (test != 0 && !(monEntier > 1)) {
-            test--;
-        }
-        return monEntier != test;
+    	return Entreprise.joursFeries(jour).contains(jour);
     }
 
     /**
@@ -148,7 +142,10 @@ public final class Entreprise {
      */
     public static boolean estDansPlage(LocalDate d, LocalDate debut, LocalDate fin) {
         // à implémenter en TDD !
-        throw new RuntimeException("à implémenter en TDD !");
+    	if (d == null || debut == null || fin == null) {
+            return false;
+        }
+        return !d.isBefore(debut) && !d.isAfter(fin);
     }
 
 }
